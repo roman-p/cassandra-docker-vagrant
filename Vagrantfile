@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
     end
     node12.vm.network "private_network", ip: "192.168.100.113"
     node12.vm.provider "virtualbox" do |v|
-      v.memory = 1024
+      v.memory = 2048
     end
   end
 

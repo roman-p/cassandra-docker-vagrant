@@ -5,8 +5,8 @@ cluster = Cluster(['192.168.100.111'])
 session = cluster.connect()
 
 #having 3 nodes in Datacenter1 and 1 node in Datacenter2
-#session.execute("CREATE KEYSPACE test_space WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'Datacenter1' : 2, 'Datacenter2' : 1 };")
-#session.execute("CREATE TABLE test_space.test_table (myID int PRIMARY KEY, someNumber int)")
+session.execute("CREATE KEYSPACE IF NOT EXISTS test_space WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'Datacenter1' : 2, 'Datacenter2' : 1 };")
+session.execute("CREATE TABLE IF NOT EXISTS test_space.test_table (myID int PRIMARY KEY, someNumber int)")
 
 insert_query_command = "INSERT INTO test_space.test_table (myID, someNumber) VALUES (%s, %s)"
 insert_query = cassandra.query.SimpleStatement(insert_query_command,
