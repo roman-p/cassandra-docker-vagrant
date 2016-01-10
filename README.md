@@ -28,6 +28,8 @@ end
 - 192.168.100.112
 - 192.168.100.113
 - 192.168.101.111(seed)
+
+
 If you ssh into the node12 machine, run the following command to test the setup 
 ```bash
 docker run -it test-cassandra
