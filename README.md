@@ -23,9 +23,12 @@ end
 ```
 
 ## Test Setup
-**deployment.sh** script in **test** folder starts two Datacenters(3 and 1 nodes respectively) on preconfigured IPs: 
+**deployment.sh** script starts two Datacenters(3 and 1 nodes respectively) on preconfigured IPs: 
 - 192.168.100.111(seed)
 - 192.168.100.112
 - 192.168.100.113
 - 192.168.101.111(seed)
-You can run the *testScript.py*, given you have datastax cassandra bindings installed 
+If you ssh into the node12 machine, run the following command to test the setup 
+```bash
+docker run -it test-cassandra
+```
