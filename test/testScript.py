@@ -1,6 +1,7 @@
 from cassandra.cluster import Cluster
 import cassandra
 
+#connect to first datacenter
 cluster = Cluster(['192.168.100.111'])
 session = cluster.connect()
 
@@ -8,6 +9,7 @@ session = cluster.connect()
 session.execute("CREATE KEYSPACE IF NOT EXISTS test_space WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'Datacenter1' : 2, 'Datacenter2' : 1 };")
 session.execute("CREATE TABLE IF NOT EXISTS test_space.test_table (myID int PRIMARY KEY, someNumber int)")
 
+#create input/output commands with relevant consistency levels
 insert_query_command = "INSERT INTO test_space.test_table (myID, someNumber) VALUES (%s, %s)"
 insert_query = cassandra.query.SimpleStatement(insert_query_command,
 	consistency_level=cassandra.ConsistencyLevel.EACH_QUORUM)
